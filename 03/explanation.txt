@@ -1,0 +1,36 @@
+1 . Explaining how the highlighted constructs work?
+
+ * First of all it create  buffered channel with name cnp.using a bufferd channel can avoid the deadlock   and it can hold up to 10 function that take no arguments and return nothing
+ * Created a for loop and it iterate  4 times. inside the fo loop we called the anonymous function as a go routine 
+ * Inside the next loop  we range over the cnp channel  and called the f functionrecived from the channel
+ * Then we passed the function to cnp inside that we called fmt package to print the values
+
+2 . Giving use-cases of what these constructs could be used for.
+
+ buffered channel - decoupling production  and consumption 
+
+ for loop with 4 iterations -parallel processing
+
+ anonymous function - concurrency
+
+  sending function to channel -task queing
+
+
+
+
+3 . What is the significance of the for loop with 4 iterations?
+
+The for loop 4 iterations creates multiple worker goroutines to process tasks from tha cnp channel concurrently
+It allows the program to handle more work effiently and effectivel by leaveraging the power of concurrency and parallelism in go
+
+4 . What is the significance of make(chan func(), 10)?
+
+This creates a  Bufferes channel named cnp and inside that manage tasks  asychronously. it enables effientl task queing and processing,and avoid deadlocks in concurrent  programs
+
+ 5 . Why is “HERE1” not getting printed?
+
+The reason for that not  printing is because the main function exits before  worker goroutine  have  a cahnce to process the function 
+
+
+** If we want to print the  “HERE1” also  then we need to modify the code by adding the waitgroups to it and print it correctly then the main function 
+will wait to execute the  worker to process the tasks
